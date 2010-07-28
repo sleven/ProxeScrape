@@ -156,11 +156,11 @@ class Proxytest:
 		phase_one_complete = True
 		print "Phase one is done. Waiting for phase two."
 		
-		while not phase_two_complete:
-			print "phase_twoPool.qsize:", phase_twoPool.qsize()
-			print "threadPool.qsize:", threadPool.qsize()
-			print "processedPool.qsize:", processedPool.qsize()
-			time.sleep(5)
+		#~ while not phase_two_complete:
+			#~ print "phase_twoPool.qsize:", phase_twoPool.qsize()
+			#~ print "threadPool.qsize:", threadPool.qsize()
+			#~ print "processedPool.qsize:", processedPool.qsize()
+			#~ time.sleep(5)
 			
 		for i in range(total):
 			plist.append(processedPool.get())
@@ -346,7 +346,7 @@ class Proxytest:
 				num = 0
 				while 1:
 					time.sleep(1)
-					print "..Phase2 still alive here.."
+					print self.getName(), "..Phase2 still alive here.."
 					try:
 						item = phase_twoPool.get()
 						num += 1

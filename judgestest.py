@@ -99,13 +99,16 @@ class judgesTest():
 		j_num = len(index)
 		
 		print "* Testing ", j_num, " judges."
-		
+		num = 1
 		for judge in index:
+			num += 1
 			status, return_judge = self.is_bad_judge(judge)
 
 			if status == 0:
 				windex.append(judge)
 				#print "+ is working."
+				if not num % 10:
+					print "•"
 				print "•",
 				sys.stdout.flush()
 				

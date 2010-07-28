@@ -276,7 +276,7 @@ def main():
 	rigorous = False 	#Test the proxy list more than once per update.
 	
 	renig = False		#Clear all reject proxies from DB. Only happens once at the start.
-	debug = False		#If true, skips contacting the web pages for new scrapes
+	debug = True		#If true, skips contacting the web pages for new scrapes
 	run_google = False #run the google spider module
 	poast = True
 	test_a = True	#Run proxy test after update

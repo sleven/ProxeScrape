@@ -1,12 +1,10 @@
 http://asape.ru/azenv.php
-http://azenv.freehostia.com/azenv/azenv.php
 http://bentseather.be.funpic.de/azenv.php
 http://bigfish82110.bi.funpic.de/azenv104/azenv.php
 http://chaos-k-web.hp.infoseek.co.jp/cgi-bin/prxjdg/prxjdg.cgi
 http://chillly.ch.ohost.de/aze/azenv.php
 http://gen.nolinka.com/azenv.php
 http://goldenpirates.org/proxy/azenv.php
-http://hpcgi3.nifty.com/tyutarou/judge/prxjdg.cgi
 http://interplanete.com/cgi-bin/prxjdg.cgi
 http://it.deliaz.name/files/azenv.php
 http://jiffgins.110mb.com/azenv.php
@@ -14,8 +12,6 @@ http://judgeazenv.bplaced.net/azenv.php
 http://kaoxis.iespana.es/azenv.php
 http://mannequeen.net/~rock/share/cgi/prxjdg.cgi
 http://maxrabbit.limewebs.com/azenv.php
-http://mcreate.net/cgi-bin/envchk/prxjdg.cgi
-http://members.multimania.nl/proxyworld31/azenv.php
 http://members.multimania.nl/proxyworld31/azenv.php
 http://membres.multimania.fr/pej7000/pej7000.php
 http://membres.multimania.fr/proxyworld/azenv.php
@@ -66,4 +62,3 @@ http://www3.kcn.ne.jp/~morota/cgi-bin/prxjdg.cgi
 http://www4.atpages.jp/~perl/prx4ever/prxjdg.cgi
 http://yia001.hp.infoseek.co.jp/cgi-bin/prxjdg.cgi
 http://yia002.hp.infoseek.co.jp/cgi-bin/prxjdg.cgi
-http://ynaru103.s9.xrea.com/cgi-bin/proxy/prxjdg.cgi

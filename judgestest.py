@@ -37,7 +37,7 @@ pattern4 = re.compile(r"173.64.68.97")
 pattern3 = re.compile(r"HTTP_USER_AGENT")
 class judgesTest():
 	def is_bad_judge(self, this_judge):
-		socket.setdefaulttimeout(3)
+		socket.setdefaulttimeout(2)
 		try:			       
 			opener = urllib2.build_opener()
 			opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -106,6 +106,9 @@ class judgesTest():
 			if status == 0:
 				windex.append(judge)
 				#print "+ is working."
+				print "•",
+				sys.stdout.flush()
+				
 			elif status == 1:
 				pass
 				#print "- appears broken."

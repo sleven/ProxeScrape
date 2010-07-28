@@ -42,6 +42,7 @@ GEOIP = pygeoip.Database('GeoIP.dat')
 
 chan_mode = False
 phase_one_complete = False
+phase_two_complete = False
 
 threadPool = Queue.Queue ()
 processedPool = Queue.Queue()
@@ -59,6 +60,7 @@ class Proxytest:
 		global theVar
 		global x
 		global phase_one_complete
+		global phase_two_complete
 		global block_list
 		global judge_identifier
 		
@@ -132,6 +134,7 @@ class Proxytest:
 			#~ batch_number = batch_list.index(batch)
 			#~ print "* batch", batch_number, " is ", len(batch_list[batch_number]), "proxies long"
 		phase_one_complete = False
+		phase_two_complete = False
 		print "Starting phase_two processor..."
 		self.phase_two()
 		print "started."
@@ -150,9 +153,15 @@ class Proxytest:
 					x+=1
 			theVar = 0
 			x = 0
-		print "Phase one is done. Waiting for phase two."
 		phase_one_complete = True
+		print "Phase one is done. Waiting for phase two."
 		
+		while not phase_two_complete:
+			print "phase_twoPool.qsize:", phase_twoPool.qsize()
+			print "threadPool.qsize:", threadPool.qsize()
+			print "processedPool.qsize:", processedPool.qsize()
+			time.sleep(5)
+			
 		for i in range(total):
 			plist.append(processedPool.get())
 				
@@ -333,11 +342,11 @@ class Proxytest:
 		class MyThread ( threading.Thread ):
 			def run (self):
 				global phase_one_complete
+				global phase_two_complete
 				num = 0
 				while 1:
-					if phase_one_complete and phase_twoPool.qsize() == 0:
-						print "Phase two processor quitting, nothing left to do."
-						break
+					time.sleep(1)
+					print "..Phase2 still alive here.."
 					try:
 						item = phase_twoPool.get()
 						num += 1
@@ -368,7 +377,8 @@ class Proxytest:
 							print "phase_two error:", e
 						#~ print "taking a break"
 						#~ time.sleep(random.randint(1,3))
-					except:
+					except Exception, e:
+						print "P2 ERROR:", e
 						pass
 				
 
@@ -478,6 +488,5 @@ class Proxytest:
 				#os.chdir('..')
 				
 				return resp, True
-		threadp2 = MyThread()
-		threadp2.start()
+		MyThread().start()
 		#threadp2.join(10)

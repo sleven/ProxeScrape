@@ -71,11 +71,11 @@ class foxyProxy():
 		new_text = ""
 		ap_text = ""
 		
-		with open("/home/sleven/.mozilla/firefox/fqxkj6v8.default/foxyproxy.xml") as f:
+		with open("/home/sleven/.mozilla/firefox/4lnqadx1.default/foxyproxy.xml") as f:
 			ap_text = f.read()
 			ap_text = ap_text[0:ap_text.find(remove)]
 		
-		with open("/home/sleven/.mozilla/firefox/fqxkj6v8.default/foxyproxy.xml","w") as f:
+		with open("/home/sleven/.mozilla/firefox/4lnqadx1.default/foxyproxy.xml","w") as f:
 			for i in proxies:
 				new_text = new_text + self.proxy_chunk(i)
 			f.write(ap_text + "<proxies>" + new_text + '</proxies></foxyproxy>')
@@ -127,7 +127,7 @@ def main():
 	proxy_test = proxytest.Proxytest()
 	test_result = proxy_test.run_test(test_list, judges, judge_identifier, block_list)
 	
-	with open("/home/sleven/.mozilla/firefox/fqxkj6v8.default/foxyproxy.xml") as f:
+	with open("/home/sleven/.mozilla/firefox/4lnqadx1.default/foxyproxy.xml") as f:
 		bak = f.read()
 	
 	for a in test_result:
@@ -142,7 +142,7 @@ def main():
 		else:
 			print "No good proxies to add"
 	except Exception, e:
-		with open("/home/sleven/.mozilla/firefox/fqxkj6v8.default/foxyproxy.xml","w") as f:
+		with open("/home/sleven/.mozilla/firefox/4lnqadx1.default/foxyproxy.xml","w") as f:
 			f.write(bak)
 		print "Wrote backup."
 		print e

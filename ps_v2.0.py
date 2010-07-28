@@ -34,7 +34,7 @@ import socket
 from time import gmtime, strftime
 import generate_poast
 import judgestest
-os.chdir('/home/sleven/prog/v2')
+os.chdir('/home/sleven/prog/ps_v2')
 
 """for sorting algorithm"""
 from operator import itemgetter, attrgetter

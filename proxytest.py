@@ -28,7 +28,7 @@ x = 0
 pool_size = 60
 threadlist = []
 #5-31-2010
-ip = re.compile(r"173.64.121.244")
+ip = re.compile(r"173.64.68.97")
 judge_identifier = []
 block_list = []
 
@@ -319,15 +319,15 @@ class Proxytest:
 					#print "ERROR:", detail
 					return resp, False
 				
-				os.chdir('/home/sleven/apps/v2/proxytest_dump')
-				f = open(str(prox) + "_1_.html","w")
-				f.write(page)
-				f.close()
-				os.chdir('..')
+				#os.chdir('/home/sleven/apps/v2/proxytest_dump')
+				#f = open(str(prox) + "_1_.html","w")
+				#f.write(page)
+				#f.close()
+				#os.chdir('..')
 				
 				return resp, True
 		MyThread().start()
-		MyThread.join(10)
+		##MyThread.join(10)
 
 	def phase_two(self):
 		class MyThread ( threading.Thread ):
@@ -366,8 +366,8 @@ class Proxytest:
 								#print self.getName(), "here, responsible for ", item.ip, " found it to be BROKEN"
 						except Exception, e:
 							print "phase_two error:", e
-						print "taking a break"
-						time.sleep(random.randint(1,3))
+						#~ print "taking a break"
+						#~ time.sleep(random.randint(1,3))
 					except:
 						pass
 				
@@ -471,12 +471,13 @@ class Proxytest:
 						#~ print prox, "failed test #2 permanently"
 					return resp, False
 				
-				os.chdir('/home/sleven/apps/v2/proxytest_dump')
-				f = open(str(prox) + "_2_.html","w")
-				f.write(page)
-				f.close()
-				os.chdir('..')
+				#os.chdir('/home/sleven/apps/v2/proxytest_dump')
+				#f = open(str(prox) + "_2_.html","w")
+				#f.write(page)
+				#f.close()
+				#os.chdir('..')
 				
 				return resp, True
-		MyThread().start()
-		MyThread.join(10)
+		threadp2 = MyThread()
+		threadp2.start()
+		#threadp2.join(10)

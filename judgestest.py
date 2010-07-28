@@ -31,7 +31,7 @@ socket.setdefaulttimeout(2)
 index = []
 pattern1 = re.compile(r"HTTP_HOST") #\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
 pattern2 = re.compile(r"REMOTE_ADDR") #\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
-pattern4 = re.compile(r"173.64.121.244")
+pattern4 = re.compile(r"173.64.68.97")
 #pattern2b = re.compile(r"HTTP_X_FORWARDED_FOR\s+173.64.123.229")
 #pattern2c = re.compile(r"HTTP_REMOTE_ADDR\s+173.64.123.229")
 pattern3 = re.compile(r"HTTP_USER_AGENT")

@@ -1,16 +1,17 @@
-http://85.17.98.226/~avtest/azenv.php
 http://asape.ru/azenv.php
-http://azenv.deliaz.name/
 http://azenv.freehostia.com/azenv/azenv.php
 http://bentseather.be.funpic.de/azenv.php
 http://bigfish82110.bi.funpic.de/azenv104/azenv.php
 http://chaos-k-web.hp.infoseek.co.jp/cgi-bin/prxjdg/prxjdg.cgi
 http://chillly.ch.ohost.de/aze/azenv.php
+http://gen.nolinka.com/azenv.php
 http://goldenpirates.org/proxy/azenv.php
+http://hpcgi3.nifty.com/tyutarou/judge/prxjdg.cgi
 http://interplanete.com/cgi-bin/prxjdg.cgi
-http://intersec.pytalhost.com/azenv.php
 http://it.deliaz.name/files/azenv.php
+http://jiffgins.110mb.com/azenv.php
 http://judgeazenv.bplaced.net/azenv.php
+http://kaoxis.iespana.es/azenv.php
 http://mannequeen.net/~rock/share/cgi/prxjdg.cgi
 http://maxrabbit.limewebs.com/azenv.php
 http://mcreate.net/cgi-bin/envchk/prxjdg.cgi
@@ -21,6 +22,7 @@ http://membres.multimania.fr/proxyworld/azenv.php
 http://mike.darkwars.org/env.php
 http://mini-order.org/pxj/azenv.php
 http://mkfavorit.ru/azenv.php
+http://mokel.org/proxyjudge/azenv.php
 http://niro.pytalhost.com/azenv.php
 http://ocl.opoint.com/proxyjudge/prxjdg.cgi
 http://pr0.net/deny/azenv.php
@@ -32,14 +34,13 @@ http://rumkugel.org/board/proxyc/.azenv.php
 http://scifi.pages.at/x-paradox/azenv.php
 http://seksid.awardspace.com/
 http://sergi.exhost.cz/mix/azenv.php
-http://sevy.host.sk/azenv.php
 http://side-m.hp.infoseek.co.jp/cgi-bin/prxjdg.cgi
 http://smolda.eu/azenv.php
 http://streamingfreebies.com/azenv.php
-http://technofreax.te.ohost.de/azenv.php
 http://thunder.prohosting.com/~pelu/cgi-bin/prxjdg.cgi
 http://tonrenn.ifrance.com/azenv.php
 http://twozerozeronine.freehostia.com/prxjdg/azenv.php
+http://user.ecc.u-tokyo.ac.jp/~mm57311/prxjdg.cgi
 http://valentin.hocher.de/azenv.php
 http://wfuchs.de/azenv.php
 http://www.30tech.com/iptest.php
@@ -51,6 +52,7 @@ http://www.hanseatic-trader.de/azv/azv.php
 http://www.interplanete.com/cgi-bin/prxjdg.cgi
 http://www.matchav.com/deny2/azenv.php
 http://www.mcreate.net/cgi-bin/envchk/prxjdg.cgi
+http://www.messedupshit.com/judgeme/azenv.php
 http://www.pr0.net/deny2/azenv.php
 http://www.proxy.abgeblasen.de/azenv.php
 http://www.proxyjudge.biz/az.php
@@ -64,3 +66,4 @@ http://www3.kcn.ne.jp/~morota/cgi-bin/prxjdg.cgi
 http://www4.atpages.jp/~perl/prx4ever/prxjdg.cgi
 http://yia001.hp.infoseek.co.jp/cgi-bin/prxjdg.cgi
 http://yia002.hp.infoseek.co.jp/cgi-bin/prxjdg.cgi
+http://ynaru103.s9.xrea.com/cgi-bin/proxy/prxjdg.cgi

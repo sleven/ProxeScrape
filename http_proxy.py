@@ -57,18 +57,20 @@ class Http_Proxy:
 		
 		
 		
-	def scrape_page (self, url):
+	def scrape_page (self, url, v):
 		plist = []
 		port_list = []
 		string_list = []
 		
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sys.stdout.flush()
 		
 		try:
 			html = scrape.html_proxy_get(url, True)
 		except Exception, e:
-			print "Error scraping the page:", e
+			if v:
+				print "Error scraping the page:", e
 			return plist;
 		
 		try:
@@ -121,12 +123,12 @@ class Http_Proxy:
 			new_proxy = proxy.Proxy(string,decoded_port)
 			new_proxy.set_url(url)
 			plist.append(new_proxy)
-
-		print "Got ", len(plist), " proxies."
+		if v:
+			print "Got ", len(plist), " proxies."
 		return plist;
 		
 		
-	def execute (self):
+	def execute (self, v):
 		urls = ["http://proxyhttp.net/"]
 		
 		for x in range(1,10):
@@ -137,7 +139,7 @@ class Http_Proxy:
 		url = 0
 		
 		for x in range(0, len(urls)):
-			list.extend(self.scrape_page(urls[x]))
+			list.extend(self.scrape_page(urls[x], v))
 			for new_proxy in list:
 				new_proxy.set_url(urls[x])
 

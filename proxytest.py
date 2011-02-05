@@ -28,7 +28,7 @@ x = 0
 pool_size = 60
 threadlist = []
 #5-31-2010
-ip = re.compile(r"173.64.68.97")
+ip = re.compile(r"173.64.122.161")
 judge_identifier = []
 block_list = []
 
@@ -339,7 +339,7 @@ class Proxytest:
 		##MyThread.join(10)
 
 	def phase_two(self):
-		class MyThread ( threading.Thread ):
+		class MyThread (threading.Thread ):
 			def run (self):
 				global phase_one_complete
 				global phase_two_complete
@@ -351,14 +351,19 @@ class Proxytest:
 						item = phase_twoPool.get()
 						num += 1
 						print "we got #", num, phase_twoPool.qsize(), "objects so far in pool to process."
+						print "Let's give the proxy server a second's break.."
+						snooze = random.randint(3,8)
 						
+						time.sleep(snooze)
 						try:
-							this_judge2 = "http://membres.multimania.fr/pej7000/pej7000.php"
+							this_judge2 = judgePool.get()
+							#this_judge2 = "http://membres.multimania.fr/pej7000/pej7000.php"
 							
 							item = self.process_proxy(item, this_judge2)
 							item.last_checked = strftime("%d/%m/%Y %H:%M:%S %Z", time.localtime())
 							
 							processedPool.put(item)
+							judgePool.put(this_judge2)
 												
 							if item.alive == True:
 								item.clear()
@@ -455,7 +460,7 @@ class Proxytest:
 						return resp, False
 					if not ip.search(page) == None:
 						#print "leaks IP address"
-						#print prox, "failed test #2 IP leak"
+						print prox, "failed test #2 IP leak"
 						return resp, False
 						
 					if page.find('codeen') > -1:
@@ -463,7 +468,7 @@ class Proxytest:
 						return resp, False
 				except urllib2.HTTPError, e:
 					print 'Error code: ', e.code
-					print prox, "failed test #2."
+					print prox, "failed test #2. j:", this_judge2
 					#~ if j < 2:
 						#~ j += 1
 						#~ time.sleep(random.randint(3,20))
@@ -473,7 +478,7 @@ class Proxytest:
 					return resp, False
 				except Exception, detail:
 					print "ERROR:", detail
-					print prox, "failed test #2."
+					print prox, "failed test #2. j:", this_judge2
 					#~ if j < 2:
 						#~ j += 1
 						#~ time.sleep(random.randint(3,20))

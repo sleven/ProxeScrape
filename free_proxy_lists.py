@@ -27,7 +27,7 @@ import scrape_page_3
 
 class Free_Proxy_Lists():
 	
-	def execute(self):
+	def execute(self,v):
 		
 		sys.stdout.flush()
 		scrape = proxytools.ProxyTools()
@@ -37,7 +37,8 @@ class Free_Proxy_Lists():
 
 		url = 'http://www.freeproxylists.com/elite.html'
 		page_clip = scrape.html_proxy_get(url)
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sub_urls = []
 		sub_index = 0
 		
@@ -51,14 +52,16 @@ class Free_Proxy_Lists():
 				sub_urls.append(str(set[1]))
 				page_clip = page_clip.replace(pg_num.group(),"")
 			except Exception, e:
-				print e
+				if v:
+					print e
 				break
 		
 		while(sub_index < len(sub_urls)):
 			sub_url = "http://www.freeproxylists.com/load_elite_" + sub_urls[sub_index] + ".html"
-			#print "  Scraping child page ", sub_url
+			if v:
+				print "  Scraping child page ", sub_url
 			new_list = scrape_page_3.ScrapePage()
-			list = new_list.execute(sub_url)
+			list = new_list.execute(sub_url, v)
 			
 			for new_proxy in list:
 				plist.append(new_proxy)
@@ -68,7 +71,8 @@ class Free_Proxy_Lists():
 			
 		url = 'http://freeproxylists.com/anonymous.html'
 		page_clip = scrape.html_proxy_get(url)
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sub_urls = []
 		sub_index = 0
 		
@@ -82,14 +86,17 @@ class Free_Proxy_Lists():
 				sub_urls.append(str(set[1]))
 				page_clip = page_clip.replace(pg_num.group(),"")
 			except Exception, e:
-				print e
+				if v:
+					print e
 				break
 				
 		while(sub_index < len(sub_urls)):
 			sub_url = "http://www.freeproxylists.com/load_anon_" + sub_urls[sub_index] + ".html"
-			#print "  Scraping child page ", sub_url
+			if v:
+				print "  Scraping child page ", sub_url
+			
 			new_list = scrape_page_3.ScrapePage()
-			list = new_list.execute(sub_url)
+			list = new_list.execute(sub_url, v)
 			
 			for new_proxy in list:
 				plist.append(new_proxy)

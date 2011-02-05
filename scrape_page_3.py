@@ -25,21 +25,24 @@ proxy_pattern = re.compile(r"[1-2]?[0-9]{1,3}\.[1-2]?[0-9]{1,3}\.[1-2]?[0-9]{1,3
 
 
 class ScrapePage:	
-	def execute (self, url):
+	def execute (self, url, v):
 		plist = []
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sys.stdout.flush()
 
 		try:
 			html = scrape.html_proxy_get(url, True)
 		except Exception, e:
-			print "Scrape Error: html error:", e
+			if v:
+				print "Scrape Error: html error:", e
 			return plist;
 		
 		try:
 			clean_page = html2text.html2text(remove_control_chars(html))
 		except Exception, e:
-			print e
+			if v:
+				print e
 			try:
 				f =  open("html2text_errors","a")
 				f.write(url)
@@ -60,6 +63,6 @@ class ScrapePage:
 				plist.append(new_proxy)
 		except Exception, e:
 			print "Error stacking strings: ", e
-
-		print "Got ", len(plist), " proxies."
+		if v:
+			print "Got ", len(plist), " proxies."
 		return plist;

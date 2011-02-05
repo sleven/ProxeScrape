@@ -18,14 +18,15 @@ scrape = proxytools.ProxyTools()
 
 class EliteBSpot:	
 	
-	def execute (self):
+	def execute (self, v):
 		global plist
 		global url
 		
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sys.stdout.flush()
 
-		infile = scrape.html_proxy_get(url)
+		infile = scrape.html_proxy_get(url, v)
 		
 		page_clip = infile[infile.find((ip_pattern.search(infile)).group()):len(infile)]
 		switch = True

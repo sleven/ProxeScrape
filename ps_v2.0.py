@@ -34,7 +34,7 @@ import socket
 from time import gmtime, strftime
 import generate_poast
 import judgestest
-os.chdir('/home/sleven/prog/ps_v2')
+os.chdir('/home/sleven/projects/inter_rape/inter_rape')
 
 """for sorting algorithm"""
 from operator import itemgetter, attrgetter
@@ -77,7 +77,7 @@ import checked_proxy_lists
 load_new_module = checked_proxy_lists.Checked_Proxy_Lists()
 module.append(load_new_module)
 
-import google
+#import google
 """import proxy modules"""
 import proxytest
 import proxytools
@@ -275,6 +275,7 @@ def main():
 	chan_mode = False	#Test for chan proxies
 	rigorous = False 	#Test the proxy list more than once per update.
 	
+	v = False			#verbose
 	renig = False		#Clear all reject proxies from DB. Only happens once at the start.
 	debug = False		#If true, skips contacting the web pages for new scrapes
 	run_google = False #run the google spider module
@@ -351,12 +352,14 @@ def main():
 			print "" "* Checking for updates..."
 			for x in range(len(module)):
 				try:
-					new = module[x].execute()
+					print "\n+ Execute module",x
+					new = module[x].execute(v)
 					for item in new:
 						current.append(item)
-					print "==Module results: ", len(new), "proxies found =="
-				except:
-					print "Some error with module", x
+					print "= Module",x,"results:", len(new), "proxies found"
+				except Exception, e:
+					print "** MODULE", x, "ERROR:", e
+					print "= Module",x,"results: failed"
 			print len(current), " total new proxies scraped."
 
 			temp = len_all

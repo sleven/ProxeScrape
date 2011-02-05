@@ -18,11 +18,12 @@ scrape = proxytools.ProxyTools()
 socket.setdefaulttimeout(10)
 class HinkyDink:
 	
-	def execute (self):
+	def execute (self, v):
 		global hinkylist
 		global url
 		
-		print "Scraping ",url,
+		if v:
+			print "Scraping ",url,
 		sys.stdout.flush()
 		for x in range(start, pages + 1):
 			switch = True
@@ -46,8 +47,8 @@ class HinkyDink:
 						new_proxy = proxy.Proxy(new_ip, new_port)
 						new_proxy.set_url(url)
 						plist.append(new_proxy)
-					except:
-						print "Proxy ", new_ip, " doesn't have a port?"
+					except Exception, e:
+						print "Proxy ", new_ip, " doesn't have a port?", e
 				
 				except Exception, e:
 					#print e, "..the fuck?"

@@ -5,7 +5,7 @@ import random
 import time
 
 class PF_PublicList:
-	def execute (self):
+	def execute (self, v):
 		urls = []
 		
 		try:
@@ -14,7 +14,8 @@ class PF_PublicList:
 				urls.append(line.strip('\n'))
 			f.close()
 		except Exception, e:
-			print e
+			if v:
+				print e
 		
 		plist = []
 		scrape = proxytools.ProxyTools()
@@ -23,18 +24,21 @@ class PF_PublicList:
 		try:
 			random.shuffle(urls)
 		except Exception, e:
-			print e
+			if v:
+				print e
 		try:
 			for x in range(0, len(urls)):
 				try:
 					new_list = scrape_page_3.ScrapePage()
-					list = new_list.execute(urls[x])
+					list = new_list.execute(urls[x], v)
 					for new_proxy in list:
 						new_proxy.set_url(urls[x])
 						plist.append(new_proxy)
 				except Exception, e:
-					print "...couldn't find page", e
+					if v:
+						print "...couldn't find page", e
 					continue
 		except Exception, e:
-			print e
+			if v:
+				print e
 		return plist;

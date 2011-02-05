@@ -31,7 +31,7 @@ import random
 
 class Checked_Proxy_Lists():
 	
-	def execute(self):
+	def execute(self, v):
 		try:
 			sub_pattern = re.compile(r'on \S+</a>')
 			sys.stdout.flush()
@@ -42,11 +42,13 @@ class Checked_Proxy_Lists():
 
 			url = 'http://www.checkedproxylists.com/proxylists_high_anonymous.html'
 			page_clip = scrape.html_proxy_get(url)
-			print "Scraping ",url,
+			if v:
+				print "Scraping ",url,
 			sub_urls = []
 			sub_index = 0
 		except Exception, e:
-			print e
+			if v:
+				print e
 		while(True):
 			try:
 				pg_num = sub_pattern.search(page_clip)
@@ -55,14 +57,15 @@ class Checked_Proxy_Lists():
 					sub_urls.append(str(grouped[grouped.find(" ")+1:grouped.find("</a>")]))
 				page_clip = page_clip.replace(pg_num.group(),"")
 			except Exception, e:
-				print "Error: ",e
+				if v:
+					print "Error: ",e
 				break
 		try:
 			while(sub_index < len(sub_urls)):
 				
 				sub_url = "http://www.checkedproxylists.com/load_proxylist_high_anonymous_" + sub_urls[sub_index] + ".html"
 				new_list = scrape_page_3.ScrapePage()
-				list = new_list.execute(sub_url)
+				list = new_list.execute(sub_url, v)
 				
 				for new_proxy in list:
 					plist.append(new_proxy)
@@ -70,7 +73,8 @@ class Checked_Proxy_Lists():
 				sub_index += 1
 				time.sleep(random.randint(4,12))
 		except Exception, e:
-			print e
+			if v:
+				print e
 			
 			
 		url = 'http://www.checkedproxylists.com/proxylists_anonymous.html'
@@ -87,13 +91,14 @@ class Checked_Proxy_Lists():
 					sub_urls.append(str(grouped[grouped.find(" ")+1:grouped.find("</a>")]))
 				page_clip = page_clip.replace(pg_num.group(),"")
 			except Exception, e:
-				print "Error: ",e
+				if v:
+					print "Error: ",e
 				break
 		try:
 			while(sub_index < len(sub_urls)):
 				sub_url = "http://www.checkedproxylists.com/load_proxylist_anonymous_" + sub_urls[sub_index] + ".html"
 				new_list = scrape_page_3.ScrapePage()
-				list = new_list.execute(sub_url)
+				list = new_list.execute(sub_url, v)
 				
 				for new_proxy in list:
 					plist.append(new_proxy)
@@ -101,5 +106,6 @@ class Checked_Proxy_Lists():
 				sub_index += 1
 				time.sleep(random.randint(4,12))
 		except Exception, e:
-			print e
+			if v:
+				print e
 		return plist;

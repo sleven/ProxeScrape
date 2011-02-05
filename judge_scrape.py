@@ -44,18 +44,17 @@ import random
 from operator import itemgetter, attrgetter
 
 plist = []
-start_search_results = re.compile(r"<h2 class=hd>Search Results</h2>")
-end_search_results = re.compile(r'div id=bsf style="padding:1.8em 0;margin-top:0">')
-start_nav_bar = re.compile(r'<li class=g>')
+start_search_results = re.compile(r'td valign="top"><div id="center_col"><div id="res"><div id="ires">')
+end_search_results = re.compile(r'<div id="foot">')
 
 socket.setdefaulttimeout(4)
 
-url_pattern = re.compile(r'href="http://\S+')
+url_pattern = re.compile(r'http://\S+')
 pages = 6
 start = 2
 scrape = proxytools.ProxyTools()
 total_results = 0
-
+page_clip = ""
 class Judge_Scrape(threading.Thread):
 	def run(self):
 		print "Scraping ",url,
@@ -80,7 +79,7 @@ class Judge_Scrape(threading.Thread):
 				return True;
 		return False;
 		
-	def google_crawl(self, upstream=["inurl:prxjdg.cgi", "inurl:azenv.php"]):
+	def google_crawl(self, upstream=['proxyjudge"HTTP_HOST="']):#'"inurl:prxjdg cgi" -list, -site, -keyword', '"inurl:azenv.php" -list, -site, -keyword']):
 			self.domain_block_list = []
 			f = open("domain_block_list", "r")
 			for line in f:
@@ -109,8 +108,14 @@ class Judge_Scrape(threading.Thread):
 					result_num = 0
 					
 					try:
-						page_clip = html[html.find((start_nav_bar.search(html)).group()):len(html)]
-					except:
+						print start_search_results.search(html).group()
+					except Exception, e:
+						print "couldn't find start"
+						print e
+						exit()
+					try:
+						page_clip = html[html.find((start_search_results.search(html)).group()):html.find((end_search_results.search(html)).group())]
+					except Exception, e:
 						print "search didn't return any results.", e
 						result_num = 20
 						pass
@@ -152,11 +157,11 @@ class Judge_Scrape(threading.Thread):
 								page_clip = page_clip.replace(result,"")
 								
 								if self.bad_domain(result) == True:
-									#print "dumped:", result
+									print "rejected:", result
 									pass
 								else:
 									""" 16 comes from <a href="""
-									result = result[6:len(result)]
+									#result = result[6:len(result)]
 									
 									print "Found ==>", result
 									
